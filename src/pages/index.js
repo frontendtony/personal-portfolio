@@ -1,21 +1,67 @@
-import React from "react"
-import { Link } from "gatsby"
+// import { Link } from 'gatsby';
+// import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import React from 'react';
+import styled from 'styled-components';
+import Layout from '../components/layout';
+import SEO from '../components/utils/seo';
+import { grey } from '../design-system/colors';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const StyledIndexPage = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .welcome-message {
+    font-size: 80px;
+    font-weight: bold;
+    padding-left: 10vmin;
+
+    @media screen and (max-width: 500px) {
+      font-size: 70px;
+    }
+  }
+
+  .blog-link {
+    background-color: ${grey.black};
+    position: fixed;
+    right: -64px;
+    bottom: -83px;
+    transform: rotate(-45deg);
+    width: 106px;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    transition: background-color 0.1s linear;
+
+    :hover {
+      background-color: ${grey.white};
+      color: ${grey.darkText};
+    }
+  }
+`;
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+    <SEO title='Home' />
+    <StyledIndexPage>
+      <div className='welcome-message'>
+        <p>Hi</p>
+        <p>I'm Tony</p>
+        <p>Front-end Engineer</p>
+      </div>
 
-export default IndexPage
+      <a href='#' className='blog-link'>
+        Blog
+      </a>
+    </StyledIndexPage>
+
+    {/* <AniLink cover direction='up' bg='#fff' top='entry' to='/page-2/'>
+      Go to page 2
+    </AniLink> */}
+  </Layout>
+);
+
+export default IndexPage;
