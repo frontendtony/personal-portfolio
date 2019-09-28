@@ -12,6 +12,9 @@ const StyledMenu = styled(animated.div)`
   z-index: 2;
   padding: 50px;
   overflow: hidden;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 
   > * {
     display: grid;
@@ -57,26 +60,16 @@ const StyledMenu = styled(animated.div)`
 const Menu = ({ isOpen }) => {
   const transitions = useTransition(isOpen, null, {
     from: {
-      position: 'absolute',
-      opacity: 0,
-      transform: 'scale(0)',
-      borderRadius: '50%',
-      left: '100vw',
-      bottom: '100vh'
+      transform: 'translate(100%, -100%)',
+      borderRadius: '50%'
     },
     enter: {
-      opacity: 1,
-      transform: 'scale(1)',
-      borderRadius: '0%',
-      left: '0',
-      bottom: '0'
+      transform: 'translate(0, 0)',
+      borderRadius: '0%'
     },
     leave: {
-      opacity: 0,
-      transform: 'scale(0)',
-      borderRadius: '50%',
-      left: '100vw',
-      bottom: '100vh'
+      transform: 'translate(100vw, -100vh)',
+      borderRadius: '50%'
     }
   });
 
