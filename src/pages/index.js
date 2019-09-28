@@ -35,6 +35,7 @@ const StyledIndexPage = styled.div`
     justify-content: center;
     padding-top: 10px;
     transition: background-color 0.1s linear;
+    z-index: 5;
 
     :hover {
       background-color: ${grey.white};
