@@ -1,5 +1,5 @@
 export const grey = {
-  dark: '#1d1d1b',
+  dark: '#121221',
   white: '#ffffff',
   muted: '#595959',
   darkText: '#121212',
