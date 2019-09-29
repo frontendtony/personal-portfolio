@@ -61,24 +61,35 @@ const Menu = ({ isOpen }) => {
   const transitions = useTransition(isOpen, null, {
     from: {
       transform: 'translate(100%, -100%)',
-      borderRadius: '50%'
+      borderRadius: '50%',
+      raise: 'translateY(1000px)',
+      drop: 'translateY(-500px)',
+      opacity: 0
     },
     enter: {
       transform: 'translate(0, 0)',
-      borderRadius: '0%'
+      borderRadius: '0%',
+      raise: 'translateY(0)',
+      drop: 'translateY(0)',
+      opacity: 1
     },
     leave: {
       transform: 'translate(100vw, -100vh)',
-      borderRadius: '50%'
+      borderRadius: '50%',
+      raise: 'translateY(1000px)',
+      drop: 'translateY(-500px)',
+      opacity: 0
     }
   });
 
   return transitions.map(
-    ({ item, key, props }) =>
+    ({ item, key, props: { borderRadius, transform, opacity, raise, drop } }) =>
       item && (
-        <StyledMenu key={key} style={props}>
-          <h6 className='my__name'>Anthony Oyathelemhi</h6>
-          <div className='nav__links'>
+        <StyledMenu key={key} style={{ borderRadius, transform, opacity }}>
+          <animated.h6 className='my__name' style={{ transform: drop }}>
+            Anthony Oyathelemhi
+          </animated.h6>
+          <animated.div className='nav__links' style={{ transform: raise }}>
             <a className='link' href='/'>
               Home
             </a>
@@ -88,7 +99,7 @@ const Menu = ({ isOpen }) => {
             <a className='link' href='/projetcs'>
               Projects
             </a>
-          </div>
+          </animated.div>
           <div className='social__links'>
             <a className='link' href='#'>
               Twitter
@@ -100,14 +111,14 @@ const Menu = ({ isOpen }) => {
               Medium
             </a>
           </div>
-          <div className='contact__links'>
+          <animated.div className='contact__links' style={{ transform: raise }}>
             <span className='leading__text'>Got a project ?</span>
             <div>
               <a href='mailto:tonero91@gmail.com'>Email</a>
               {` `}/{` `}
               <a href='tel:+2347081627814'>Call</a>
             </div>
-          </div>
+          </animated.div>
         </StyledMenu>
       )
   );
