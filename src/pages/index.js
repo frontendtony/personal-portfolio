@@ -21,6 +21,10 @@ const StyledIndexPage = styled.div`
     @media screen and (max-width: 500px) {
       font-size: 70px;
     }
+
+    @media screen and (max-height: 700px) {
+      font-size: 50px;
+    }
   }
 
   .blog-link {
