@@ -19,5 +19,6 @@ export default createGlobalStyle`
     min-height: 100vh;
     background-color: ${grey.dark};
     color: ${grey.white};
+    opacity: 0; /* prevent showing unstyled elements until full page load */
   }
 `;
