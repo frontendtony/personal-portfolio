@@ -5,6 +5,7 @@
  * *********************************** */
 /* Reset margin, padding, border
  * *********************************** */
+@import '../../fonts/fonts.css';
 html,
 body,
 h1,
@@ -79,11 +80,15 @@ td {
   * *********************************** */
 html {
   font-size: 62.5%;
+  font-family: Moderat;
 }
 
 body {
   font-size: 1.6rem;
   line-height: 1.4;
+  position: relative;
+  min-height: 100vh;
+  opacity: 0; /* prevent showing unstyled elements until full page load */
 }
 
 * {
