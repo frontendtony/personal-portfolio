@@ -13,8 +13,8 @@ const StyledPageLayout = styled.div`
     grid-template: 15px 15px / 15px 15px;
     gap: 3px;
     position: absolute;
-    right: 50px;
-    top: 50px;
+    right: 10vmin;
+    top: 10vmin;
     cursor: pointer;
     z-index: 5;
     transition: all 0.3s ease-out;

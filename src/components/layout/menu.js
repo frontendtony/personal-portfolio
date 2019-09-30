@@ -10,7 +10,7 @@ const StyledMenu = styled(animated.div)`
   align-content: space-between;
   background-color: ${grey.black};
   z-index: 2;
-  padding: 50px;
+  padding: 10vmin;
   overflow: hidden;
   position: absolute;
   right: 0;
