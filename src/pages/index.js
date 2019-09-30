@@ -1,9 +1,11 @@
 // import { Link } from 'gatsby';
 // import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import React from 'react';
+import React, { useState } from 'react';
+import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
 import Layout from '../components/layout';
 import SEO from '../components/utils/seo';
+import useInterval from '../components/utils/useInterval';
 import { grey } from '../design-system/colors';
 
 const StyledIndexPage = styled.div`
@@ -17,6 +19,7 @@ const StyledIndexPage = styled.div`
     font-size: 80px;
     font-weight: bold;
     padding-left: 10vmin;
+    margin-top: -20vh;
 
     @media screen and (max-width: 500px) {
       font-size: 70px;
@@ -48,25 +51,69 @@ const StyledIndexPage = styled.div`
   }
 `;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title='Home' />
-    <StyledIndexPage>
-      <div className='welcome-message'>
-        <p>Hi</p>
-        <p>I'm Tony</p>
-        <p>Front-end Engineer</p>
-      </div>
+const IndexPage = () => {
+  const [titleIndex, setTitleIndex] = useState(0);
 
-      <a href='#' className='blog-link'>
-        Blog
-      </a>
-    </StyledIndexPage>
+  useInterval(
+    () => setTitleIndex(titleIndex => titleIndex + 1),
+    titleIndex < 4 ? 3000 : null
+  );
 
-    {/* <AniLink cover direction='up' bg='#fff' top='entry' to='/page-2/'>
+  const transitions = useTransition(titleIndex, null, {
+    from: {
+      transform: 'rotateX(-180deg)',
+      opacity: 0,
+      position: 'absolute'
+    },
+    enter: {
+      transform: 'rotateX(0deg)',
+      opacity: 1
+    },
+    leave: {
+      transform: 'rotateX(180deg)',
+      opacity: 0
+    },
+    config: { mass: 1, tension: 170, friction: 14 },
+    delay: 500
+  });
+
+  const titles = [
+    ({ style }) => <animated.p style={style}>Front-end Developer</animated.p>,
+    ({ style }) => <animated.p style={style}>CSS Lover</animated.p>,
+    ({ style }) => <animated.p style={style}>JavaScript Maestro</animated.p>,
+    ({ style }) => <animated.p style={style}>React Ninja</animated.p>,
+    ({ style }) => <animated.p style={style}>Teacher & Mentor</animated.p>
+  ];
+
+  const resetAnimation = () => {
+    if (titleIndex === 4) {
+      setTitleIndex(0);
+    }
+  };
+
+  return (
+    <Layout>
+      <SEO title='Home' />
+      <StyledIndexPage>
+        <div className='welcome-message' onClick={resetAnimation}>
+          <p>Hi</p>
+          <p>I'm Tony,</p>
+          {transitions.map(({ item, key, props }) => {
+            const Title = titles[item];
+            return <Title key={key} style={props} />;
+          })}
+        </div>
+
+        <a href='#' className='blog-link'>
+          Blog
+        </a>
+      </StyledIndexPage>
+
+      {/* <AniLink cover direction='up' bg='#fff' top='entry' to='/page-2/'>
       Go to page 2
     </AniLink> */}
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default IndexPage;
