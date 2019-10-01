@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
 import Layout from '../components/layout';
-import SEO from '../components/utils/seo';
-import useInterval from '../components/utils/useInterval';
-import { grey } from '../design-system/colors';
+import SEO from '../utils/seo';
+import useInterval from '../utils/useInterval';
 
 const StyledIndexPage = styled.div`
   height: 100vh;
@@ -31,7 +30,8 @@ const StyledIndexPage = styled.div`
   }
 
   .blog-link {
-    background-color: ${grey.black};
+    background-color: ${({ theme }) => theme.text.primary};
+    color: ${({ theme }) => theme.bg.primary};
     position: fixed;
     right: -64px;
     bottom: -83px;
@@ -45,8 +45,8 @@ const StyledIndexPage = styled.div`
     z-index: 1;
 
     :hover {
-      background-color: ${grey.white};
-      color: ${grey.darkText};
+      background-color: ${({ theme }) => theme.bg.alternate};
+      color: ${({ theme }) => theme.text.alternate};
     }
   }
 `;

@@ -1,14 +1,14 @@
 import React from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
-import { grey } from '../../design-system/colors';
 
 const StyledMenu = styled(animated.div)`
   width: 100vw;
   height: 100vh;
   display: grid;
   align-content: space-between;
-  background-color: ${grey.black};
+  background-color: ${({ theme }) => theme.bg.menu};
+  color: ${({ theme }) => theme.text.primary};
   z-index: 2;
   padding: 10vmin;
   overflow: hidden;
