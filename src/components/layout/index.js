@@ -6,15 +6,16 @@ import lightTheme from '../../theme/light';
 import GlobalStyles from './GlobalStyles';
 import './main.css';
 import Menu from './menu';
-import ThemeSwitch from './ThemeSwitch';
 import MenuButton from './MenuButton';
+import ThemeSwitch from './ThemeSwitch';
 
 const StyledPageLayout = styled.div`
   position: relative;
 `;
 
 const Layout = ({ children }) => {
-  const storedIsDarkMode = localStorage.getItem('isDarkMode');
+  const storedIsDarkMode =
+    typeof localStorage !== 'undefined' && localStorage.getItem('isDarkMode');
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(
