@@ -14,24 +14,24 @@ const StyledPageLayout = styled.div`
 `;
 
 const Layout = ({ children }) => {
-  const storedIsDarkMode =
-    typeof localStorage !== 'undefined' && localStorage.getItem('isDarkMode');
-
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isDarkMode, setIsDarkMode] = React.useState(
-    storedIsDarkMode === 'true' ? true : false
-  );
+  const [isDarkMode, setIsDarkMode] = React.useState(null);
+
+  React.useLayoutEffect(() => {
+    const storedIsDarkMode = localStorage.getItem('isDarkMode');
+    setIsDarkMode(storedIsDarkMode === 'true' ? true : false);
+  });
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleDarkMode = e => {
+  const toggleDarkMode = () => {
     localStorage.setItem('isDarkMode', !isDarkMode);
     setIsDarkMode(!isDarkMode);
   };
 
-  return (
+  return isDarkMode === null ? null : (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <StyledPageLayout>
         <GlobalStyles />
