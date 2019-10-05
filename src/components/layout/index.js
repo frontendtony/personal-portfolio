@@ -14,13 +14,14 @@ const StyledPageLayout = styled.div`
 `;
 
 const Layout = ({ children, location }) => {
-  console.log(location);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(null);
 
   React.useLayoutEffect(() => {
     const storedIsDarkMode = localStorage.getItem('isDarkMode');
-    setIsDarkMode(storedIsDarkMode === 'true' ? true : false);
+    setIsDarkMode(
+      storedIsDarkMode === null || storedIsDarkMode === 'true' ? true : false
+    );
   });
 
   const toggleMenu = () => {

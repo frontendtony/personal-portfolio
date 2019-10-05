@@ -121,8 +121,13 @@ const ThemeSwitch = ({ isDarkMode, toggleDarkMode }) => {
   });
 
   return (
-    <StyledSwitch>
-      <input type='checkbox' checked={isDarkMode} onChange={toggleDarkMode} />
+    <StyledSwitch htmlFor='theme-switch-input'>
+      <input
+        id='theme-switch-input'
+        type='checkbox'
+        checked={isDarkMode}
+        onChange={toggleDarkMode}
+      />
       <span className='slider'>
         {transitions.map(
           ({ item, key, props: { opacity, cloudTransform, starTransform } }) =>
