@@ -3,6 +3,5 @@
   font-style: normal;
   font-weight: normal;
   src: local('Moderat'), local('Moderat'),
-    url(./Moderat-Regular.woff) format('woff'),
-    url(./Moderat-Regular.woff2) format('woff2');
+    url(./Moderat-Regular.woff) format('woff');
 }
