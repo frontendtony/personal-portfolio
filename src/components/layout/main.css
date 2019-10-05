@@ -80,7 +80,7 @@ td {
   * *********************************** */
 html {
   font-size: 62.5%;
-  font-family: Moderat;
+  font-family: Moderat, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {

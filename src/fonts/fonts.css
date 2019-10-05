@@ -2,6 +2,7 @@
   font-family: 'Moderat';
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
   src: local('Moderat'), local('Moderat'),
     url(./Moderat-Regular.woff) format('woff');
 }
