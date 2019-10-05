@@ -14,7 +14,12 @@ const StyledMenu = styled(animated.div)`
   overflow: hidden;
   position: absolute;
   right: 0;
-  bottom: 0;
+  top: 0;
+
+  @media screen and (max-width: 830px) {
+    padding: 5vmin;
+    padding-bottom: 10vmin;
+  }
 
   > * {
     display: grid;
@@ -96,7 +101,7 @@ const Menu = ({ isOpen }) => {
             <a className='link' href='/skills'>
               Skills
             </a>
-            <a className='link' href='/projetcs'>
+            <a className='link' href='/projects'>
               Projects
             </a>
           </animated.div>

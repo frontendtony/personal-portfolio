@@ -13,7 +13,8 @@ const StyledPageLayout = styled.div`
   position: relative;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
+  console.log(location);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isDarkMode, setIsDarkMode] = React.useState(null);
 
@@ -34,7 +35,7 @@ const Layout = ({ children }) => {
   return isDarkMode === null ? null : (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <StyledPageLayout>
-        <GlobalStyles />
+        <GlobalStyles location={location} />
         <Menu isOpen={isMenuOpen} />
         <ThemeSwitch {...{ isDarkMode, toggleDarkMode }} />
         <MenuButton {...{ isMenuOpen, toggleMenu }} />

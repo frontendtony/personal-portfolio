@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const StyledMenuButton = styled.div`
   display: grid;
@@ -12,6 +12,11 @@ const StyledMenuButton = styled.div`
   cursor: pointer;
   z-index: 3;
   transition: all 0.3s ease-out;
+
+  @media screen and (max-width: 830px) {
+    right: 5vmin;
+    top: 5vmin;
+  }
 
   &.open {
     gap: 0px;
@@ -70,6 +75,6 @@ const MenuButton = ({ isMenuOpen, toggleMenu }) => (
 MenuButton.propTypes = {
   isMenuOpen: PropTypes.bool.isRequired,
   toggleMenu: PropTypes.func.isRequired
-}
+};
 
 export default MenuButton;

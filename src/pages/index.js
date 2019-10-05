@@ -17,7 +17,7 @@ const StyledIndexPage = styled.div`
   .welcome-message {
     font-size: 80px;
     font-weight: bold;
-    padding-left: 10vmin;
+    padding: 0 10vmin;
     margin-top: -20vh;
 
     @media screen and (max-width: 500px) {
@@ -26,6 +26,10 @@ const StyledIndexPage = styled.div`
 
     @media screen and (max-height: 700px) {
       font-size: 50px;
+    }
+
+    @media screen and (max-height: 830px) {
+      padding: 0 5vmin;
     }
   }
 
