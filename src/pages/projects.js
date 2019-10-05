@@ -1,7 +1,11 @@
 import React from 'react';
-import { animated, useTransition } from 'react-spring';
+import { useTransition } from 'react-spring';
 import styled from 'styled-components';
 import Layout from '../components/layout';
+import {
+  projectDescriptions,
+  projectNames
+} from '../components/views/projects';
 import ProjectImages from '../components/views/projects/images';
 import SEO from '../utils/seo';
 
@@ -77,112 +81,8 @@ const StyledProjectsPage = styled.div`
       top: -170px;
       width: 90%;
     }
-
-    .project-description {
-      position: absolute !important;
-      top: 120px;
-      padding-bottom: 5vw;
-    }
-  }
-
-  .project-name {
-    font-size: 50px;
-    margin-bottom: 40px;
-    font-weight: normal;
-    position: absolute;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    display: -webkit-inline-box;
-
-    @media screen and (max-height: 735px) {
-      -webkit-line-clamp: 2;
-    }
-
-    @media screen and (max-height: 570px) {
-      -webkit-line-clamp: 1;
-    }
   }
 `;
-
-const projectNames = [
-  ({ style }) => (
-    <animated.h1 className='project-name' style={style}>
-      Baya
-    </animated.h1>
-  ),
-  ({ style }) => (
-    <animated.h1 className='project-name' style={style}>
-      Flitrack
-    </animated.h1>
-  ),
-  ({ style }) => (
-    <animated.h1 className='project-name' style={style}>
-      Flitrack Admin
-    </animated.h1>
-  ),
-  ({ style }) => (
-    <animated.h1 className='project-name' style={style}>
-      PCSIS
-    </animated.h1>
-  ),
-  ({ style }) => (
-    <animated.h1 className='project-name' style={style}>
-      Magodo Cultural Day, Lorem ipsum dolor sit amet.
-    </animated.h1>
-  ),
-  ({ style }) => (
-    <animated.h1 className='project-name' style={style}>
-      Old Portfolio
-    </animated.h1>
-  )
-];
-
-const projectDescriptions = [
-  ({ style }) => (
-    <animated.p className='project-description' style={style}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum illo beatae
-      quia ad aliquam dolorum, dolores maiores molestiae vel nulla voluptatibus,
-      vitae, rerum commodi assumenda! Odio dolorum quod quisquam ad.
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p className='project-description' style={style}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum illo beatae
-      quia ad aliquam dolorum, dolores maiores molestiae vel nulla voluptatibus,
-      vitae, rerum commodi assumenda! Odio dolorum quod quisquam ad.
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p className='project-description' style={style}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum illo beatae
-      quia ad aliquam dolorum, dolores maiores molestiae vel nulla voluptatibus,
-      vitae, rerum commodi assumenda! Odio dolorum quod quisquam ad.
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p className='project-description' style={style}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum illo beatae
-      quia ad aliquam dolorum, dolores maiores molestiae vel nulla voluptatibus,
-      vitae, rerum commodi assumenda! Odio dolorum quod quisquam ad.
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p className='project-description' style={style}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum illo beatae
-      quia ad aliquam dolorum, dolores maiores molestiae vel nulla voluptatibus,
-      vitae, rerum commodi assumenda! Odio dolorum quod quisquam ad.
-    </animated.p>
-  ),
-  ({ style }) => (
-    <animated.p className='project-description' style={style}>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum illo beatae
-      quia ad aliquam dolorum, dolores maiores molestiae vel nulla voluptatibus,
-      vitae, rerum commodi assumenda! Odio dolorum quod quisquam ad.
-    </animated.p>
-  )
-];
 
 const ProjectsPage = ({ location }) => {
   const [projectIndex, setProjectIndex] = React.useState(0);
@@ -214,10 +114,13 @@ const ProjectsPage = ({ location }) => {
     }
   });
 
+  const Description = projectDescriptions[projectIndex];
+
   const previous = () => {
     setDirection('left');
     setProjectIndex(projectIndex - 1);
   };
+
   const next = () => {
     setDirection('right');
     setProjectIndex(projectIndex + 1);
@@ -259,18 +162,7 @@ const ProjectsPage = ({ location }) => {
             const Image = ProjectImages[item];
             return <Image className='project-image' style={props} key={key} />;
           })}
-
-          {transitions.map(({ item, key, props }) => {
-            const Description = projectDescriptions[item];
-            return (
-              <Description style={{ opacity: props.opacity }} key={key}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum
-                illo beatae quia ad aliquam dolorum, dolores maiores molestiae
-                vel nulla voluptatibus, vitae, rerum commodi assumenda! Odio
-                dolorum quod quisquam ad.
-              </Description>
-            );
-          })}
+          <Description />
         </div>
       </StyledProjectsPage>
     </Layout>
