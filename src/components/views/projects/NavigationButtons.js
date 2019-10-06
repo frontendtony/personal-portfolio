@@ -96,14 +96,13 @@ const Buttons = ({ previous, next, currentIndex, total }) => (
           <path
             id='Path_15'
             d='M14.527 0a14.527 14.527 0 1 0 14.526 14.527A14.527 14.527 0 0 0 14.527 0z'
-            class='circle'
+            className='circle'
           />
         </g>
         <path
           id='Path_70'
           d='M95.846 137.461l8.805-6.792v3.131h9.887v7.331h-9.887v3.126z'
-          class='arrow'
-          data-name='Path 70'
+          className='arrow'
           transform='translate(-90.828 -122.825)'
         />
       </svg>
@@ -126,15 +125,13 @@ const Buttons = ({ previous, next, currentIndex, total }) => (
           <path
             id='Path_15'
             d='M14.527 0a14.527 14.527 0 1 0 14.526 14.527A14.527 14.527 0 0 0 14.527 0z'
-            class='circle'
-            data-name='Path 15'
+            className='circle'
           />
         </g>
         <path
           id='Path_70'
           d='M95.846 137.461l8.805-6.792v3.131h9.887v7.331h-9.887v3.126z'
-          class='arrow'
-          data-name='Path 70'
+          className='arrow'
           transform='translate(-90.828 -122.825)'
         />
       </svg>

@@ -11,6 +11,7 @@ import ThemeSwitch from './ThemeSwitch';
 
 const StyledPageLayout = styled.div`
   position: relative;
+  overflow-y: ${({ isMenuOpen }) => (isMenuOpen ? 'hidden' : 'auto')};
 `;
 
 const Layout = ({ children, location }) => {
@@ -22,7 +23,7 @@ const Layout = ({ children, location }) => {
     setIsDarkMode(
       storedIsDarkMode === null || storedIsDarkMode === 'true' ? true : false
     );
-  });
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -35,7 +36,7 @@ const Layout = ({ children, location }) => {
 
   return isDarkMode === null ? null : (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-      <StyledPageLayout>
+      <StyledPageLayout isMenuOpen={isMenuOpen}>
         <GlobalStyles location={location} />
         <Menu isOpen={isMenuOpen} />
         <ThemeSwitch {...{ isDarkMode, toggleDarkMode }} />
