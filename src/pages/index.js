@@ -31,6 +31,10 @@ const StyledIndexPage = styled.div`
     @media screen and (max-height: 830px) {
       padding: 0 5vmin;
     }
+
+    @media screen and (min-width: 1024px) {
+      padding: 0 10vmin;
+    }
   }
 
   .blog-link {
