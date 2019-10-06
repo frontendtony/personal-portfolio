@@ -16,7 +16,7 @@ const StyledMenu = styled(animated.div)`
   right: 0;
   top: 0;
 
-  @media screen and (max-width: 830px) {
+  @media screen and (max-width: 1023px) {
     padding: 5vmin;
     padding-bottom: 10vmin;
   }

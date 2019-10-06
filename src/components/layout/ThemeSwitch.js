@@ -12,7 +12,7 @@ const StyledSwitch = styled.label`
   cursor: pointer;
   z-index: 1;
 
-  @media screen and (max-width: 830px) {
+  @media screen and (max-width: 1023px) {
     left: 5vmin;
     top: 5vmin;
   }

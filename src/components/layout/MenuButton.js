@@ -13,7 +13,7 @@ const StyledMenuButton = styled.div`
   z-index: 3;
   transition: all 0.3s ease-out;
 
-  @media screen and (max-width: 830px) {
+  @media screen and (max-width: 1023px) {
     right: 5vmin;
     top: 5vmin;
   }

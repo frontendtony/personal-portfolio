@@ -23,9 +23,27 @@ const StyledName = styled(animated.h1)`
 `;
 
 const StyledDescription = styled.p`
-  position: absolute !important;
+  position: absolute;
   top: 120px;
   padding-bottom: 5vw;
+
+  @media screen and (min-width: 420px) {
+    top: 250px;
+  }
+
+  @media screen and (min-width: 620px) {
+    top: 400px;
+  }
+
+  @media screen and (min-width: 840px) {
+    top: 550px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    position: relative;
+    top: 0;
+    width: 30vw;
+  }
 `;
 
 export const projectNames = [

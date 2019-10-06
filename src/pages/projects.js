@@ -7,67 +7,43 @@ import {
   projectNames
 } from '../components/views/projects';
 import ProjectImages from '../components/views/projects/images';
+import NavigationButtons from '../components/views/projects/NavigationButtons';
+import ProjectCount from '../components/views/projects/ProjectCount';
 import SEO from '../utils/seo';
 
 const StyledProjectsPage = styled.div`
   display: grid;
   min-height: 100vh;
-  grid-template: 'image' 75vh 'description' auto / 100vw;
+  grid-template: 'dark' 75vh 'light' auto / 100vw;
   position: relative;
+
+  @media screen and (min-width: 1024px) {
+    grid-template-rows: auto;
+    grid-template-columns: 60vw 40vw;
+    grid-template-areas: 'light dark';
+  }
 
   > * {
     padding: 0 5vmin;
 
-    @media screen and (min-width: 829px) {
+    @media screen and (min-width: 1024px) {
       padding: 0 10vmin;
     }
   }
 
   > .darker-section {
-    grid-area: image;
+    grid-area: dark;
     background-color: ${({ theme }) => theme.bg.primary};
     color: ${({ theme }) => theme.text.primary};
     position: relative;
     padding-top: 20vmin;
 
-    @media screen and (min-width: 829px) {
+    @media screen and (min-width: 1024px) {
       padding-top: 20vmin;
-    }
 
-    > .nav-buttons {
-      position: absolute;
-      left: 5vw;
-      bottom: 190px;
-
-      > .nav-button {
-        background-color: ${({ theme }) => theme.bg.primary};
-        color: ${({ theme }) => theme.text.primary};
-        border: 1px solid ${({ theme }) => theme.text.primary};
-        padding: 12px;
-
-        :hover {
-          background-color: ${({ theme }) => theme.text.primary};
-          color: ${({ theme }) => theme.bg.primary};
-        }
-
-        :first-child {
-          margin-right: 20px;
-        }
+      .project-name {
+        display: none;
       }
-    }
-
-    .project-number {
-      position: absolute;
-      right: 5vw;
-      bottom: 140px;
-      color: ${({ theme }) => theme.text.primary};
-      font-size: 60px;
-      font-weight: bold;
-      -webkit-text-fill-color: ${({ theme }) => theme.bg.primary};
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: ${({ theme }) => theme.text.primary};
-      z-index: 1;
-      font-variant-numeric: tabular-nums;
     }
   }
 
@@ -80,6 +56,26 @@ const StyledProjectsPage = styled.div`
       position: absolute !important;
       top: -170px;
       width: 90%;
+    }
+
+    .project-name {
+      display: none;
+    }
+
+    @media screen and (min-width: 1024px) {
+      padding-top: 25vmin;
+
+      .project-name {
+        display: -webkit-inline-box;
+        position: relative;
+        max-width: 30vw;
+      }
+
+      .project-image {
+        right: -30vw;
+        top: 25vmin;
+        width: 80%;
+      }
     }
   }
 `;
@@ -115,6 +111,7 @@ const ProjectsPage = ({ location }) => {
   });
 
   const Description = projectDescriptions[projectIndex];
+  const Name = projectNames[projectIndex];
 
   const previous = () => {
     setDirection('left');
@@ -131,37 +128,30 @@ const ProjectsPage = ({ location }) => {
       <SEO title='Projects' />
       <StyledProjectsPage>
         <div className='darker-section'>
-          {transitions.map(({ item, key, props }) => {
-            const Text = projectNames[item];
-            return (
-              <Text style={{ transform: props.textTransform }} key={key} />
-            );
-          })}
-          <div className='nav-buttons'>
-            <button
-              className='nav-button'
-              disabled={projectIndex === 0}
-              onClick={previous}
-            >
-              Prev
-            </button>
-            <button
-              className='nav-button'
-              disabled={projectIndex === projectNames.length - 1}
-              onClick={next}
-            >
-              Next
-            </button>
-          </div>
-          <span className='project-number'>
-            {(projectIndex + 1).toString().padStart(3, '0')}
-          </span>
+          {transitions.map(({ key, props }) => (
+            <Name
+              style={{ transform: props.textTransform }}
+              key={key}
+              className='project-name'
+            />
+          ))}
+          <NavigationButtons
+            next={next}
+            previous={previous}
+            currentIndex={projectIndex}
+            total={projectNames.length - 1}
+          />
+          <ProjectCount
+            current={projectIndex + 1}
+            total={projectNames.length}
+          />
         </div>
         <div className='project'>
           {transitions.map(({ item, key, props }) => {
             const Image = ProjectImages[item];
             return <Image className='project-image' style={props} key={key} />;
           })}
+          <Name className='project-name' />
           <Description />
         </div>
       </StyledProjectsPage>
