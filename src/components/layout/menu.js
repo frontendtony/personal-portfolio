@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
@@ -95,24 +96,39 @@ const Menu = ({ isOpen }) => {
             Anthony Oyathelemhi
           </animated.h6>
           <animated.div className='nav__links' style={{ transform: raise }}>
-            <a className='link' href='/'>
+            <Link className='link' to='/'>
               Home
-            </a>
-            <a className='link' href='/skills'>
+            </Link>
+            <Link className='link' to='/skills'>
               Skills
-            </a>
-            <a className='link' href='/projects'>
+            </Link>
+            <Link className='link' to='/projects'>
               Projects
-            </a>
+            </Link>
           </animated.div>
           <div className='social__links'>
-            <a className='link' href='#'>
+            <a
+              className='link'
+              href='https://twitter.com/intent/user?user_id=95310080'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Twitter
             </a>
-            <a className='link' href='#'>
+            <a
+              className='link'
+              href='https://github.com/tonerolima'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Github
             </a>
-            <a className='link' href='#'>
+            <a
+              className='link'
+              href='https://medium.com/@tonero91'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               Medium
             </a>
           </div>
