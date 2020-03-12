@@ -1,6 +1,7 @@
 // import { Link } from 'gatsby';
 // import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { animated, useTransition } from 'react-spring';
 import styled from 'styled-components';
 import Layout from '../components/layout';
@@ -101,6 +102,16 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <meta
+          name='google-site-verification'
+          content='ZaRGh9w-zFUhS4Wd-Pdzjr_U9VIdqxk3WljmJQE-rQ4'
+        />
+        <meta
+          name='google-site-verification'
+          content='ZaRGh9w-zFUhS4Wd-Pdzjr_U9VIdqxk3WljmJQE-rQ4'
+        />
+      </Helmet>
       <SEO title='Home' />
       <StyledIndexPage>
         <div className='welcome-message' onClick={resetAnimation}>
